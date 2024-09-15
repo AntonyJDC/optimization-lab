@@ -1,14 +1,9 @@
 from flask import Flask, jsonify, request
 from flask_cors import CORS
-from optimization import calculate_feasible_region, calculate_cost, calculate_optimal_solution
+from optimization import calculate_feasible_region_and_optimal_solution, calculate_cost
 
 app = Flask(__name__)
 CORS(app)  # Habilitar CORS en todas las rutas
-
-@app.route('/feasible-region', methods=['GET'])
-def feasible_region():
-    region = calculate_feasible_region()
-    return jsonify(region)
 
 @app.route('/calculate-cost', methods=['POST'])
 def cost():
@@ -18,10 +13,20 @@ def cost():
     cost_value = calculate_cost(x, y)
     return jsonify({'cost': cost_value})
 
-@app.route('/optimal-solution', methods=['GET'])
-def optimal_solution():
-    solution = calculate_optimal_solution()
-    return jsonify(solution)
+@app.route('/update-restrictions', methods=['POST'])
+def update_restrictions():
+    data = request.get_json()
+    
+    a = data.get('a', 10)
+    b = data.get('b', 20)
+    c = data.get('c', 500)
+    d = data.get('d', 40)
+
+    # Llama a la función combinada para obtener tanto la región factible como la solución óptima
+    result = calculate_feasible_region_and_optimal_solution(a, b, c, d)
+
+    return jsonify(result)
+
 
 if __name__ == '__main__':
     app.run(debug=True)
