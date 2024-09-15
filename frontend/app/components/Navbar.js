@@ -14,14 +14,13 @@ const navItems = [
         url: "/#optimization",
     },
     {
-        title: "Series Taylor",
-        label: "taylor_series",
-        url: "/#taylor_series",
-    },
-    {
         title: "Sparce Matrix",
         label: "sparce_matrix",
         url: "/#sparce_matrix",
+    },{
+        title: "Series Taylor",
+        label: "taylor_series",
+        url: "/#taylor_series",
     },
     {
         title: "Algorithms",

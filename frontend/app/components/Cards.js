@@ -21,7 +21,7 @@ export default function Cards() {
   ]
 
   return (
-    <div className="mx-auto px-5">
+    <div className="mx-auto px-5 mb-24">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {problems.map((problem, index) => (
           <Card key={index} className="flex flex-col hover:border-gray-800">

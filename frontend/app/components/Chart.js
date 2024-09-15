@@ -42,9 +42,6 @@ export default function Chart() {
     const fetchRegionAndOptimalSolution = async (params) => {
         try {
           const response = await axios.post('http://localhost:5000/update-restrictions', params);
-
-          // Imprime la respuesta para ver si está llegando correctamente
-            console.log('Respuesta de la API:', response.data);
           
           // Actualizar los valores de la región factible
           setXValues(response.data.x);
@@ -139,11 +136,11 @@ export default function Chart() {
                         </thead>
                         <tbody>
                             <tr>
-                                <td className="border px-4 py-2">X</td>
+                                <td className="border px-4 py-2">Camiones pequeños</td>
                                 <td className="border px-4 py-2">{xOptimal}</td>
                             </tr>
                             <tr>
-                                <td className="border px-4 py-2">Y</td>
+                                <td className="border px-4 py-2">Camiones grandes</td>
                                 <td className="border px-4 py-2">{yOptimal}</td>
                             </tr>
                         </tbody>
@@ -178,14 +175,14 @@ export default function Chart() {
                                     <div className="grid grid-cols-2 gap-4">
                                         <Input
                                             type="number"
-                                            placeholder="Valor de X"
+                                            placeholder="Camiones pequeños (X)"
                                             value={customX}
                                             onChange={(e) => setCustomX(e.target.value)}
                                             className="p-2 border border-gray-300 rounded"
                                         />
                                         <Input
                                             type="number"
-                                            placeholder="Valor de Y"
+                                            placeholder="Camiones grandes (Y)"
                                             value={customY}
                                             onChange={(e) => setCustomY(e.target.value)}
                                             className="p-2 border border-gray-300 rounded"
