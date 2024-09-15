@@ -37,7 +37,7 @@ export default function SparseMatrix() {
                     En ambos casos, medimos el tiempo de ejecución y el uso de memoria para comparar el rendimiento de cada enfoque. <br></br>Estos fueron los resultados obtenidos:
                 </p>
                 {/* Tabla de comparación */}
-                <div className="overflow-x-auto">
+                <div className="overflow-x-auto mb-8">
                     <table className="table-auto w-full border-collapse border border-gray-300">
                         <thead>
                             <tr className="bg-gray-100">

@@ -5,6 +5,7 @@ import TitleSection from "./components/TitleSection";
 import Optimization from "./components/Optimization";
 import ContainerSection from "./components/ContainerSection";
 import SparseMatrix from "./components/SparseMatrix";
+import TaylorSeries from "./components/TaylorSeries";
 
 export default function Home() {
   return (
@@ -22,6 +23,10 @@ export default function Home() {
       <ContainerSection>
         <TitleSection id="sparce_matrix">Sparce Matrix</TitleSection>
         <SparseMatrix />
+      </ContainerSection>
+      <ContainerSection>
+        <TitleSection id="taylor_series">Taylor Series</TitleSection>
+        <TaylorSeries />
       </ContainerSection>
     </div>
   );

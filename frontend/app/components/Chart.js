@@ -6,7 +6,6 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
 
-// Importamos Plotly.js dinámicamente para evitar problemas de SSR en Next.js
 const Plot = dynamic(() => import('react-plotly.js'), { ssr: false });
 
 export default function Chart() {
@@ -165,11 +164,11 @@ export default function Chart() {
                         {/* Dialog para calcular costo personalizado */}
                         <Dialog>
                             <DialogTrigger asChild>
-                                <Button className="bg-gray-800 text-white font-normal rounded-2xl hover:bg-gray-950 hover:transition-all">Calcular Costo Personalizado</Button>
+                                <Button>Calcular Costo Personalizado</Button>
                             </DialogTrigger>
-                            <DialogContent className="w-full max-w-lg p-6 rounded-lg shadow-lg bg-white">
+                            <DialogContent>
                                 <DialogHeader>
-                                    <DialogTitle className="text-xl font-semibold mb-4">Calcular Costo Personalizado</DialogTitle>
+                                    <DialogTitle className="text-xl font-bold mb-4">Calcular Costo Personalizado</DialogTitle>
                                 </DialogHeader>
                                 <div className="grid gap-6">
                                     <div className="grid grid-cols-2 gap-4">
@@ -188,7 +187,7 @@ export default function Chart() {
                                             className="p-2 border border-gray-300 rounded"
                                         />
                                     </div>
-                                    <Button onClick={calcularCosto} className="bg-gray-800 text-white p-2 rounded hover:bg-gray-950 hover:transition-all font-normal">Calcular costo</Button>
+                                    <Button onClick={calcularCosto}>Calcular costo</Button>
                                     {customCosto !== null && (
                                         <p className="text-lg font-semibold">El costo del transporte es: <span className='text-green-700'>${customCosto}</span></p>
                                     )}
@@ -198,11 +197,11 @@ export default function Chart() {
 
                         <Dialog>
                             <DialogTrigger asChild>
-                                <Button className="bg-gray-800 text-white font-normal rounded-2xl hover:bg-gray-950 hover:transition-all">Cambiar Restricciones</Button>
+                                <Button>Cambiar Restricciones</Button>
                             </DialogTrigger>
-                            <DialogContent className="w-full max-w-lg p-6 rounded-lg shadow-lg bg-white">
+                            <DialogContent>
                                 <DialogHeader>
-                                    <DialogTitle className="text-xl font-semibold mb-4">Cambiar Restricciones</DialogTitle>
+                                    <DialogTitle className="text-xl font-bold mb-4">Cambiar Restricciones</DialogTitle>
                                 </DialogHeader>
                                 <form onSubmit={updateRestrictions} className="grid gap-4">
                                     <p>Toneladas camiones pequeños:</p>
@@ -211,7 +210,6 @@ export default function Chart() {
                                         name="a"
                                         value={a}
                                         onChange={(e) => setA(e.target.value)}
-                                        className="p-2 border border-gray-300 rounded"
                                     />
                                     <p>Toneladas camiones grandes:</p>
                                     <Input
@@ -219,7 +217,6 @@ export default function Chart() {
                                         name="b"
                                         value={b}
                                         onChange={(e) => setB(e.target.value)}
-                                        className="p-2 border border-gray-300 rounded"
                                     />
                                     <p>Cantidad minima de toneladas:</p>
                                     <Input
@@ -227,7 +224,6 @@ export default function Chart() {
                                         name="c"
                                         value={c}
                                         onChange={(e) => setC(e.target.value)}
-                                        className="p-2 border border-gray-300 rounded"
                                     />
                                     <p>Cantidad maxima de camiones:</p>
                                     <Input
@@ -235,9 +231,8 @@ export default function Chart() {
                                         name="d"
                                         value={d}
                                         onChange={(e) => setD(e.target.value)}
-                                        className="p-2 border border-gray-300 rounded"
                                     />
-                                    <Button type="submit" className="bg-gray-800 text-white p-2 rounded hover:bg-gray-950 hover:transition-all font-normal">Actualizar</Button>
+                                    <Button type="submit">Actualizar</Button>
                                 </form>
                             </DialogContent>
                         </Dialog>
