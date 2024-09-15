@@ -1,9 +1,10 @@
 from flask import Flask, jsonify, request
 from flask_cors import CORS
 from optimization import calculate_feasible_region_and_optimal_solution, calculate_cost
+from sparse_matrix import compare_with_scipy
 
 app = Flask(__name__)
-CORS(app)  # Habilitar CORS en todas las rutas
+CORS(app)
 
 @app.route('/calculate-cost', methods=['POST'])
 def cost():
@@ -22,11 +23,15 @@ def update_restrictions():
     c = data.get('c', 500)
     d = data.get('d', 40)
 
-    # Llama a la función combinada para obtener tanto la región factible como la solución óptima
     result = calculate_feasible_region_and_optimal_solution(a, b, c, d)
 
     return jsonify(result)
 
+@app.route('/compare_sparse', methods=['GET'])
+def compare_sparse_matrices():
+    comparison = compare_with_scipy()
+    
+    return jsonify(comparison)
 
 if __name__ == '__main__':
     app.run(debug=True)
