@@ -6,6 +6,7 @@ import Optimization from "./components/Optimization";
 import ContainerSection from "./components/ContainerSection";
 import SparseMatrix from "./components/SparseMatrix";
 import TaylorSeries from "./components/TaylorSeries";
+import OptimizationResults from "./components/OptimizationResults";
 
 export default function Home() {
   return (
@@ -27,6 +28,10 @@ export default function Home() {
       <ContainerSection>
         <TitleSection id="taylor_series">Taylor Series</TitleSection>
         <TaylorSeries />
+      </ContainerSection>
+      <ContainerSection>
+        <TitleSection id="optimization_algorithms">Optimization Algorithms</TitleSection>
+        <OptimizationResults />
       </ContainerSection>
     </div>
   );

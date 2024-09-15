@@ -40,22 +40,22 @@ export default function Chart() {
 
     const fetchRegionAndOptimalSolution = async (params) => {
         try {
-          const response = await axios.post('http://localhost:5000/update-restrictions', params);
-          
-          // Actualizar los valores de la región factible
-          setXValues(response.data.x);
-          setY1Values(response.data.y1);
-          setY2Values(response.data.y2);
-          
-          // Actualizar los valores óptimos
-          setXOptimal(response.data.x_optimal);
-          setYOptimal(response.data.y_optimal);
-          setMinCost(response.data.min_cost);
-          
+            const response = await axios.post('http://localhost:5000/update-restrictions', params);
+
+            // Actualizar los valores de la región factible
+            setXValues(response.data.x);
+            setY1Values(response.data.y1);
+            setY2Values(response.data.y2);
+
+            // Actualizar los valores óptimos
+            setXOptimal(response.data.x_optimal);
+            setYOptimal(response.data.y_optimal);
+            setMinCost(response.data.min_cost);
+
         } catch (error) {
-          console.error('Error fetching region and optimal solution:', error);
+            console.error('Error fetching region and optimal solution:', error);
         }
-      };    
+    };
 
     useEffect(() => {
         const initialParams = { a, b, c, d };
@@ -65,13 +65,13 @@ export default function Chart() {
     const updateRestrictions = async (event) => {
         event.preventDefault();
         const params = {
-          a: parseFloat(a),
-          b: parseFloat(b),
-          c: parseFloat(c),
-          d: parseFloat(d),
+            a: parseFloat(a),
+            b: parseFloat(b),
+            c: parseFloat(c),
+            d: parseFloat(d),
         };
         fetchRegionAndOptimalSolution(params);
-      };
+    };
 
     return (
         <div className="container mx-auto p-4">
@@ -118,6 +118,8 @@ export default function Chart() {
                             title: 'Región Factible y Solución Óptima',
                             xaxis: { title: 'Cantidad de camiones pequeños (X)' },
                             yaxis: { title: 'Cantidad de camiones grandes (Y)', range: [0, 50] },
+                            plot_bgcolor: "transparent",
+                            paper_bgcolor: "transparent",
                         }}
                         config={{ responsive: true, displayModeBar: false }}
                         style={{ width: '100%', height: '450px' }}
