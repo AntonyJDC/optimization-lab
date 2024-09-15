@@ -4,6 +4,7 @@ import Cards from "./components/Cards";
 import TitleSection from "./components/TitleSection";
 import Optimization from "./components/Optimization";
 import ContainerSection from "./components/ContainerSection";
+import SparseMatrix from "./components/SparseMatrix";
 
 export default function Home() {
   return (
@@ -20,6 +21,7 @@ export default function Home() {
       </ContainerSection>
       <ContainerSection>
         <TitleSection id="sparce_matrix">Sparce Matrix</TitleSection>
+        <SparseMatrix />
       </ContainerSection>
     </div>
   );
