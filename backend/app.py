@@ -3,6 +3,7 @@ from flask_cors import CORS
 from optimization import calculate_feasible_region_and_optimal_solution, calculate_cost
 from sparse_matrix import compare_with_scipy
 from taylor_series import calculate_taylor_series
+from optimization_algorithms import optimize_method
 import numpy as np
 
 app = Flask(__name__)
@@ -56,5 +57,27 @@ def get_taylor_series():
         })
     except ValueError as e:
         return jsonify({'error': str(e)})
+    
+    
+@app.route('/optimize', methods=['GET'])
+def optimize():
+    x0 = np.array([2, 2])  # Punto inicial
+    options = {'maxiter': 1000, 'disp': False}
+    methods = ['BFGS', 'Newton-CG', 'Powell']
+
+    results = {}
+
+    for method in methods:
+        res, duration = optimize_method(method, x0, options)
+        results[method] = {
+            'result': res.fun,
+            'point_opt': res.x.tolist(),
+            'iterations': res.nit,
+            'time': duration
+        }
+
+    return jsonify(results)
+
+
 if __name__ == '__main__':
     app.run(debug=True)
