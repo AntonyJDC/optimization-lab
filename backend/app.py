@@ -2,6 +2,8 @@ from flask import Flask, jsonify, request
 from flask_cors import CORS
 from optimization import calculate_feasible_region_and_optimal_solution, calculate_cost
 from sparse_matrix import compare_with_scipy
+from taylor_series import calculate_taylor_series
+import numpy as np
 
 app = Flask(__name__)
 CORS(app)
@@ -33,5 +35,26 @@ def compare_sparse_matrices():
     
     return jsonify(comparison)
 
+@app.route('/taylor_series', methods=['POST'])
+def get_taylor_series():
+    data = request.get_json()
+
+    # Obtener los parámetros
+    func_choice = data.get('func_choice')
+    n = int(data.get('n_terms'))
+    x0 = float(data.get('x0'))
+
+    try:
+        # Llamar a la función que calcula la serie de Taylor
+        x_vals, original_func, approx_func = calculate_taylor_series(func_choice, x0, n)
+
+        # Retornar los datos en formato JSON
+        return jsonify({
+            'x_vals': x_vals.tolist(),
+            'original_vals': original_func.tolist(),
+            'taylor_vals': approx_func.tolist()
+        })
+    except ValueError as e:
+        return jsonify({'error': str(e)})
 if __name__ == '__main__':
     app.run(debug=True)
