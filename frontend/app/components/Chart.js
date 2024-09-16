@@ -60,7 +60,7 @@ export default function Chart() {
     useEffect(() => {
         const initialParams = { a, b, c, d };
         fetchRegionAndOptimalSolution(initialParams);
-    }, []);
+    }, [a, b, c, d]);
 
     const updateRestrictions = async (event) => {
         event.preventDefault();
