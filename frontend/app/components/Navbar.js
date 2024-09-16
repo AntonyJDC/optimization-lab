@@ -14,8 +14,8 @@ const navItems = [
         url: "/#optimization",
     },
     {
-        title: "Sparce Matrix",
-        label: "sparce_matrix",
+        title: "Sparse Matrix",
+        label: "sparse_matrix",
         url: "/#sparce_matrix",
     },{
         title: "Series Taylor",
