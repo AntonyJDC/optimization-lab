@@ -1,5 +1,7 @@
 # Optimization Lab
 
+![Optimization Lab Cover](screen.png)
+
 **Optimization Lab** es una herramienta educativa interactiva que te permite resolver problemas de optimización mediante la visualización gráfica de la región factible y comparaciones de diferentes métodos de optimización. El frontend está desplegado en Vercel, mientras que el backend puede ser ejecutado localmente.
 
 ## Características
